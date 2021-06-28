@@ -45,7 +45,7 @@ export default function ({item, index, expandItem, setExpandItem}) {
           {item.price} &#8382;
         </p>
         <div className='buttons position-absolute d-flex align-items-center medium'>
-          <button classname='remove' onClick={remove}>
+          <button className='remove' onClick={remove}>
             <i className="fas fa-minus" />
           </button>
           <button className='add' onClick={add}>
