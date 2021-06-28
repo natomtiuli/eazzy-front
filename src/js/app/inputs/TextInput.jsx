@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ({label, placeholder, name, register, rules, errorMessage, className="", defaultValue="", onChange}) {
+export default function ({label, placeholder, name, register, rules, errorMessage, className="", defaultValue="", onChange, spanClassName}) {
   return (
     <div className={`input-div ${className}`}>
       {
@@ -16,11 +16,14 @@ export default function ({label, placeholder, name, register, rules, errorMessag
           {...register(name, rules)}
           onChange={onChange}
         />
-        <div className="input-group-append">
-          <div className="input-group-text">
-            <span className="fas fa-user"></span>
+        {
+          spanClassName &&
+          <div className="input-group-append">
+            <div className="input-group-text">
+              <span className={ `${spanClassName}` }></span>
+            </div>
           </div>
-        </div>
+        }
       </div>
       {
         errorMessage &&

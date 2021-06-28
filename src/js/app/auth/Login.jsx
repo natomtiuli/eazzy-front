@@ -66,6 +66,7 @@ export default function ({setLoginComponent}) {
               }} 
               errorMessage={errors?.email?.message}
               className='mb-2'
+              spanClassName= 'fas fa-user'
             />
             <PasswordInput 
               label='პაროლი' 

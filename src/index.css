@@ -213,7 +213,8 @@ div.divider {
 
 .mobile-menu-component, 
 .login-component,
-.cart-component {
+.cart-component,
+.register-component {
   width: 100vw;
   min-height: 100vh;
   background-color: #d3d3d3;
@@ -230,7 +231,8 @@ div.divider {
 
 .mobile-menu-component[exitanimation="1"],
 .login-component[exitanimation="1"],
-.cart-component[exitanimation="1"] {
+.cart-component[exitanimation="1"],
+.register-component[exitanimation="1"]{
   animation-name: slideOutRight;
 }
 
