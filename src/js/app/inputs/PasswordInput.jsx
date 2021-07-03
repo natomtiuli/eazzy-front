@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export default function ({label, placeholder, name, register, rules, errorMessage, className="", defaultValue="", onChange}) {
+  const [show, setShow] = useState(false);
   return (
     <div className={`input-div ${className}`}>
       {
@@ -9,7 +10,7 @@ export default function ({label, placeholder, name, register, rules, errorMessag
       }
       <div className='input-group'>
         <input
-          type="password"
+          type={show === false ? "password" : "text"}
           className={`form-control ${errorMessage ? 'is-invalid' : ''}`}
           placeholder={placeholder}
           defaultValue={defaultValue}
@@ -17,8 +18,11 @@ export default function ({label, placeholder, name, register, rules, errorMessag
           onChange={onChange}
         />
         <div className="input-group-append">
-          <div className="input-group-text">
-            <span className="fas fa-lock"></span>
+          <div 
+            className="btn input-group-text"
+            onClick={()=>{setShow(!show)}} 
+          >
+            <span className={`fas ${show === false ? 'fa-lock' : 'fa-unlock'}`}></span>
           </div>
         </div>
       </div>

@@ -20,6 +20,7 @@ export default function ({setRegisterComponent}) {
     const logPromise = await axios.post("https://localhost:44353/v1/account/signup", data, {
       headers: {'Access-Control-Allow-Origin': '*'},
     }).then(res => {
+      console.log(res);
       if (res.data.success) {
           if(res.data) {
             setRegisterComponent(false);

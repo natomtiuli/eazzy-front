@@ -27,10 +27,11 @@ export default function ({setLoginComponent}) {
         
         axios.get("https://localhost:44353/v1/customer", {
           headers: {Authorization: `Bearer ${res.data.accessToken}`}
-        }).then(res => {
-          if(res.data) {
-            context.setUser(res.data);
-            setLoginComponent(false);
+        }).then(result => {
+          if(result.data) {
+            context.setUser(result.data, res.data.accessToken);
+            console.log("res:",res.data.accessToken);
+            setExitAnimation(1);
           }
         })
       }
@@ -78,12 +79,12 @@ export default function ({setLoginComponent}) {
               errorMessage={errors?.password?.message}
               className='mb-2'
             />
-            <CheckboxInput 
+            {/* <CheckboxInput 
               label='დაიმახსოვრე' 
               name='rememberMe'
               register={register}
               className='mb-4'
-            />
+            /> */}
 
             <div className="input-group">
                 <button type="submit" className="btn btn-success btn-block">ავტორიზაცია</button>

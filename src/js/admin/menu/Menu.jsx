@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import AddTable from './AddTable';
-import TableList from './TableList';
+import AddMenu from './AddMenu';
+import MenuList from './MenuList';
 
 export default function() {
   const [openComponent, setOpenComponent] = useState('list');
@@ -19,9 +19,9 @@ export default function() {
           </ul>
         </div>
       </nav>
-      {openComponent === 'add' && <AddTable />}
+      {openComponent === 'add' && <AddMenu />}
       
-      {openComponent === 'list' && <TableList />}
+      {openComponent === 'list' && <MenuList />}
     </div>
   )
 }

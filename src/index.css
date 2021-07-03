@@ -26,8 +26,38 @@ body {
   position: relative;
 }
 
+.content-wrapper {
+  min-height: calc(100vh - 57px) !important;  
+}
+
+.flex-1 {
+  flex: 1;
+}
+
 button {
   background-color: transparent;
+}
+
+div.fixed-bg {
+  position: fixed;
+  z-index: 1040;
+  background-color: #dbdbdcc9;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.fixed-bg button.close-btn {
+  font-size: 22px;
+  position: absolute;
+  right: 25px;
+  border: unset;
+  top: 10px;
 }
 
 .absolute-center {
@@ -308,6 +338,8 @@ div.divider {
   overflow: hidden;
   min-width: 280px;
   min-height: 180px;
+  max-width: 500px;
+  max-height: 333px;
   width: 75vw;
   height: 45vw;
   border-radius: 4px 20px 20px 4px;
@@ -343,6 +375,7 @@ div.divider {
   border-radius: 4px;
   flex-wrap: wrap;
   padding-left: calc(20vw + 18px);
+  min-height: 22vw;
   transition: padding 0.4s;
 }
 

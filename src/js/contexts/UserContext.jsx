@@ -8,16 +8,18 @@ export const UserContext = createContext({
 
 export const UserContextProvider = (props) => {
   const [state, setState] = useState(JSON.parse(localStorage.getItem("user")));
-  const [accessToken, setAccessToken] = useState();
+  const [accessToken, setAccessToken] = useState(JSON.parse(localStorage.getItem("accessToken")));
 
-  const setUser = (user) => {
+  const setUser = (user, token) => {
     setState(user);
     localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('accessToken', JSON.stringify(token));
   };
 
   const resetUser = () => {
     setState(null);
     localStorage.removeItem('user');
+    localStorage.removeItem('accessToken');
     setAccessToken(null);
   };
 

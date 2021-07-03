@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import AddTable from './AddTable';
-import TableList from './TableList';
+import AddMenuItem from './AddMenuItem';
+import MenuItemList from './MenuItemList';
 
 export default function() {
   const [openComponent, setOpenComponent] = useState('list');
@@ -11,7 +11,7 @@ export default function() {
         <div className="collapse navbar-collapse show">
           <ul className="navbar-nav mr-auto">
             <li className={`nav-item ${openComponent==='list' ? 'btn-primary active' : ''}`} onClick={()=>setOpenComponent('list')}>
-              <a className="nav-link" href="#">მაგიდები</a>
+              <a className="nav-link" href="#">პროდუქტები</a>
             </li>
             <li className={`nav-item ${openComponent==='add' ? 'btn-primary active' : ''}`} onClick={()=>setOpenComponent('add')}>
               <a className="nav-link" href="#">დამატება</a>
@@ -19,9 +19,9 @@ export default function() {
           </ul>
         </div>
       </nav>
-      {openComponent === 'add' && <AddTable />}
+      {openComponent === 'add' && <AddMenuItem />}
       
-      {openComponent === 'list' && <TableList />}
+      {openComponent === 'list' && <MenuItemList />}
     </div>
   )
 }
