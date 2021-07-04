@@ -13,7 +13,7 @@ export default function ({setCartComponent}) {
         exitAnimation === 1 && setCartComponent(false)
       }}  
     >
-      <div className="main-padding">
+      <div className="main-padding text-dark">
         <div className='divider d-flex align-items-center justify-content-between'>
           <button 
             className='back'
