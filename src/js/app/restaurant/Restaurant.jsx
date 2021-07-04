@@ -40,32 +40,6 @@ export default function () {
         FetchRestaurants();
     }, [search, currentPage])
 
-    const categories = [
-        'Cold Dishes',
-        'Hot Dishes',
-        'Cold Drinks',
-        'Hot Drinks',
-        'Alcohol',
-        'Salad'
-    ];
-
-    const items = [
-        {
-            id: '0',
-            name: 'ტოსტი',
-            description: 'აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა  ',
-            price: '10.00',
-            picture: '/images/food2.jpg'
-        },
-        {
-            id: '1',
-            name: 'ფდსფდსფდ',
-            description: 'აღწერა',
-            price: '12.00',
-            picture: '/images/food1.jpg'
-        },
-    ]
-
     return (
         <div className='restaurant-component'>
             <div style={{ width: '90%' }} className='ml-auto h-auto mr-auto input-group mb-3'>
@@ -85,7 +59,7 @@ export default function () {
             </div>
             <div className='category-buttons mb-3 white hide-scrollbar d-flex'>
                 {
-                    categories.map((item, index) => {
+                    /*categories.map((item, index) => {
                         return (
                             <button
                                 key={index}
@@ -95,7 +69,7 @@ export default function () {
                                 {item}
                             </button>
                         )
-                    })
+                    })*/
                 }
                 <div className='padded' />
             </div>

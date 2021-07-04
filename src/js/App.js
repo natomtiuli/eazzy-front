@@ -25,7 +25,7 @@ function App() {
           <div className="App">
             <Header />
               <Switch>
-                <Route exact path='/' component={Menu} />
+                <Route exact path='/' component={Restaurant} />
                 <Route exact path='/logout' component={Logout} />
 
                 <AdminRoute exact path='/admin' component={AdminHome} />
