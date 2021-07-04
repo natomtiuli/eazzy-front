@@ -39,11 +39,11 @@ export default function ({setAddUserCardComponent}) {
             return (
               <Card key={index} style={{ width: '100%' }}>
                 <Card.Body>
-                  <Card.Title className="w-100">{item.NumberMask}</Card.Title>
-                      <Card.Subtitle className="block mb-2 text-muted">Expires : {item.Expires}, CCV : {item.CCV}</Card.Subtitle>
+                  <Card.Title className="w-100">{item.numberMask}</Card.Title>
+                      <Card.Subtitle className="block mb-2 text-muted">Expires : {item.expires}, CCV : {item.cCV}</Card.Subtitle>
                 </Card.Body>
-                <Card.Text>
-                    Card Holder : {item.CardHolder}
+                <Card.Text className="block ml-3 mb-2">
+                    Card Holder : {item.cardHolder}
                 </Card.Text>
               </Card>
             )

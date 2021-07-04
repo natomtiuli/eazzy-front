@@ -241,7 +241,8 @@ div.divider {
 
 }
 
-.mobile-menu-component, 
+.mobile-menu-component,
+.card-component, 
 .login-component,
 .cart-component,
 .register-component {
@@ -249,7 +250,7 @@ div.divider {
   min-height: 100vh;
   background-color: #d3d3d3;
   /* background: linear-gradient(312deg, #7485ff, #7d489c); */
-  border-left: 1px dashed #35263e;
+  border-left: 1px solid #35263e;
   z-index: 20;
   top: 0;
   padding: 30px 0;
@@ -266,7 +267,8 @@ div.divider {
 
 .login-component[exitanimation="1"],
 .cart-component[exitanimation="1"],
-.register-component[exitanimation="1"]{
+.register-component[exitanimation="1"],
+.card-component[exitanimation="1"]{
   animation-name: slideOutRight;
 }
 
@@ -302,7 +304,8 @@ div.divider {
   z-index: 30;
 }
 
-.menu-component {
+.menu-component,
+.restaurant-component {
   min-height: 100vh;
   padding: 75px 0px 100px;
   background-color: #28222b ;
