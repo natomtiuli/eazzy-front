@@ -1,26 +1,33 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {UserContext} from '../../contexts/UserContext';
-import EditCategory from './EditCategory';
+import EditMenuItem from './EditMenuItem';
+import { useForm } from 'react-hook-form';
+import SelectInput from '../../app/inputs/SelectInput';
 import axios from 'axios';
 
 export default function() {
-  const [categories, setCategories] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pagesAmount, setPagesAmount] = useState();
-  const [pageSize, setPageSize] = useState(10);
+  const {register, handleSubmit, control, getValues, formState: { errors }} = useForm();
+  const [menus, setMenus] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
   const [editMode, setEditMode] = useState({
-    id: '',
+    item: {},
     open: false
   });
 
   const userContext = useContext(UserContext);
-  
-  const FetchCategories = () => {
-    axios.get(`https://localhost:44353/v1/menu/menuitemtypes`,{
-      params: {
-        "PageIndex": currentPage,
-        "PageSize": pageSize,
-      }
+
+  const menuChange = (value) => {
+    console.log(value);
+    setMenuItems(menus.find(m => m.menuId === value).menuItems);
+  }
+
+  const FetchMenuItems = (value) => {
+    FetchMenus();
+    setMenuItems(menus.find(m => m.menuId === value).menuItems);
+  }
+
+  const FetchMenus = () => {
+    axios.get(`https://localhost:44353/v1/menu`,{
     },{
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -28,80 +35,87 @@ export default function() {
       },
     }).then(res => {
       console.log(res.data.data);
-      setCategories(res.data.data);
-      res.data.totalCount < pageSize ? setPagesAmount(1) : setPagesAmount(parseInt(res.data.totalCount/pageSize));
+      setMenus(res.data.data);
     });
   }
 
-  const DeleteCategory = (i) => {
-    axios.delete(`https://localhost:44353/v1/menu/menuitemtype/${i}`, {}).then(res => {
-      FetchCategories();
+  const DeleteMenuItem = (i, menuId) => {
+    axios.delete(`https://localhost:44353/v1/menu/menuitem/${i}`, {}).then(res => {
+      FetchMenuItems(menuId);
     })
   }
 
   useEffect(()=>{
-    FetchCategories();
+    FetchMenus();
   },[]);
 
   return (
     <div>
-      <ul className="list-group mb-4">
-        {
-          categories.map((item, index) => {
-            return(
-              <li key={index} className="list-group-item d-flex align-items-center justify-content-between">
-                {item.name}
-                <div>
-                  <button 
-                    className="btn btn-outline-info mr-2"
-                    onClick={()=>setEditMode({
-                      id: item.id,
-                      open: true
-                    })}
-                  >
-                    რედაქტირება
-                  </button>
-                  <button 
-                    className='btn btn-outline-danger'
-                    onClick={()=>DeleteCategory(item.id)}
-                  >
-                    წაშლა
-                  </button>
-
-                </div>
-              </li>
-            )
-          })
-        }
-      </ul>
-      <nav aria-label="...">
-        <ul className="pagination">
-          <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`} onClick={()=>currentPage !== 1 && setCurrentPage(currentPage-1)}>
-            <span className="page-link">Previous</span>
-          </li>
+      <SelectInput
+        label="Choose menu"
+        formGroupClassName='full-width'
+        name="MenuId"
+        optionLabel = "name"
+        control={control}
+        options={menus}
+        getValues={getValues}
+        optionValue='menuId'
+        callback={menuChange}
+        register={register}
+        errorMessage={errors?.MenuId?.message}
+      />
+      <div className='container'>
+        <div className='row'>
           {
-          ()=> {
-            for(let i = 1; i <= pagesAmount; ++i) {
-              return (
-                <div>
-                  <li 
-                    className={`page-item ${currentPage === i ? 'active' : ''}`} 
-                    onClick={()=>setCurrentPage(i)}
-                  >
-                    <a className="page-link" href="#">{i}</a>
-                  </li>
+            menuItems.map((item, index) => {
+              return(
+                <div key={index} className="col-md-4" style={{minWidth: '340px'}}>
+                  <div className='card mb-4 box-shadow' style={{minWidth: '320px'}}>
+                    <div className="card-img-top position-relative overflow-hidden" style={{height: '200px'}}>
+                      <img src={item.imageUrl} className="d-block w-100 absolute-center" alt="news image" />
+                    </div>
+                    <div className='card-body'>
+                      <h5>
+                        {item.name}
+                      </h5>
+                      <p className='card-text mb-0'>
+                        {item.description}
+                      </p>
+                      <p className="text-muted d-block mb-3">
+                        {item.price} &#8382;
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button 
+                            type="button" 
+                            className="btn btn-sm btn-outline-secondary"
+                            onClick={()=>setEditMode({
+                              item: item,
+                              open: true
+                            })}
+                          >
+                            Edit
+                          </button>
+                          <button 
+                            type="button" 
+                            className="btn btn-sm btn-outline-secondary"
+                            onClick={()=>DeleteMenuItem(item.menuItemId, item.menuId)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )
-            }
-          }}
-          <li className={`page-item ${currentPage === pagesAmount ? 'disabled' : ''}`} onClick={()=>currentPage !== pagesAmount && setCurrentPage(currentPage+1)}>
-            <a className="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
+            })
+          }
+        </div>
+      </div>
       {
         editMode.open === true &&
-        <EditCategory editMode={editMode} setEditMode={setEditMode} FetchCategories={FetchCategories} />
+        <EditMenuItem editMode={editMode} setEditMode={setEditMode} FetchMenuItems={FetchMenuItems} />
       }
     </div>
   )
