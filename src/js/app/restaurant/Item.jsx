@@ -3,11 +3,11 @@ import { CartContext } from '../../contexts/CartContext';
 import { UserContext } from '../../contexts/UserContext';
 import axios from 'axios';
 
-export default function ({ item, index, expandItem, setExpandItem }) {
+export default function ({ item, index, expandItem, setExpandItem, tableId }) {
   const userContext = useContext(UserContext)
   const cart = useContext(CartContext);
   const restaurantId = 0;
-  const tableId = 0;
+  
   const handleExpand = () => {
     (index === expandItem) ? setExpandItem(-1) : setExpandItem(index);
   }

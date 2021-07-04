@@ -26,7 +26,7 @@ function App() {
             <Header />
               <Switch>
                 <Route exact path='/' component={Restaurant} />
-                <Route exact path='/:id' component={Menu} />
+                <Route exact path='/menu/:id/:tableId?' component={Menu} />
                 <Route exact path='/logout' component={Logout} />
 
                 <AdminRoute exact path='/admin' component={AdminHome} />

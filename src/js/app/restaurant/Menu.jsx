@@ -8,8 +8,9 @@ export default function () {
   const [expandItem, setExpandItem] = useState(-1);
   const [menus, setMenus] = useState([]);
   const [tenant, setTenant] = useState({})
-
-  const {id} = useParams();
+  
+  const { id } = useParams();
+  const { tableId } = useParams();
 
   let lastMenuItemIndex = 0;
 
@@ -74,7 +75,7 @@ export default function () {
                       { lastMenuItemIndex++ }
                       return (
                         <div className='outer-div mb-2' key={lastMenuItemIndex}>
-                          <Item item={menuItem} index={lastMenuItemIndex} expandItem={expandItem} setExpandItem={setExpandItem} />
+                          <Item item={menuItem} index={lastMenuItemIndex} expandItem={expandItem} setExpandItem={setExpandItem} tableId={tableId} />
                         </div>
                       )
                     })

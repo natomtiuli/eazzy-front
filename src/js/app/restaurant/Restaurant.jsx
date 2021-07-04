@@ -80,14 +80,14 @@ export default function () {
                 restaurants.map((item, index) => {
                   return (
                     <div className='outer-div mb-2' key={index}>
-                      <Link to={`/${item.id}`} className={`item d-flex position-relative`}>
+                      <Link to={`/menu/${item.id}`} className={`item d-flex position-relative`}>
                         <div
                           className='img-wrapper position-absolute'
                         >
                           <img className='absolute-center' src={item.imageUrl} alt="picture" />
                         </div>
-                        <div className='item-description position-relative'>
-                          <h4 className='medium bold mb-1 '>
+                        <div className='item-description position-relative text-dark'>
+                          <h4 className='medium bold mb-1'>
                             {item.name}
                           </h4>
                           <p
