@@ -59,7 +59,7 @@ export default function () {
   return (
     <div className='menu-component'>
       <div className='main-padding'>
-        <img class="w-100 rounded mb-3" src={tenant.imageUrl} alt="restaurant image"></img>
+        <img className="w-100 rounded mb-3" src={tenant.imageUrl} alt="restaurant image"></img>
         <div className='menu'>
           {
             menus.map((item, index) => {
