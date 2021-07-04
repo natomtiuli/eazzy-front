@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Redirect} from 'react-router';
 import Header from './app/dashboard/Header';
 import Menu from './app/restaurant/Menu';
+import Restaurant from './app/restaurant/Restaurant'
 
 import Logout from './app/auth/Logout';
 import AdminRoute from './hooks/AdminRoute';

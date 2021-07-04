@@ -8,7 +8,7 @@ export default function({setUserCardComponent}) {
 
   return (
     <div 
-    className='mobile-menu-component black position-fixed'
+    className='card-component black position-fixed'
     exitanimation={exitAnimation}
     onAnimationEnd={() => {
       exitAnimation === 1 && setUserCardComponent(false)
