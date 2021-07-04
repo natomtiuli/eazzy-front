@@ -13,7 +13,7 @@ export default function ({ restaurantId }) {
   const FetchMenus = () => {
     axios.get(`https://localhost:44353/v1/menu`, {
       params: {
-        TenantId: 1
+        TenantId: restaurantId
       }
     }, {
       headers: {
@@ -26,7 +26,7 @@ export default function ({ restaurantId }) {
   }
 
   const FetchCurrentTenant = () => {
-    axios.get(`https://localhost:44353/v1/restaurant/${1}`, {
+    axios.get(`https://localhost:44353/v1/restaurant/${restaurantId}`, {
       headers: {
         'Access-Control-Allow-Origin': '*'
       },
