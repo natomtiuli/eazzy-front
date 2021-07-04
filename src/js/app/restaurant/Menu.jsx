@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import Item from './Item';
 import axios from 'axios';
+import { useParams } from 'react-router';
 
-export default function ({ restaurantId }) {
+export default function () {
   const [expandItem, setExpandItem] = useState(-1);
   const [menus, setMenus] = useState([]);
   const [tenant, setTenant] = useState({})
+
+  const {id} = useParams();
 
   let lastMenuItemIndex = 0;
 
   const FetchMenus = () => {
     axios.get(`https://localhost:44353/v1/menu`, {
       params: {
-        TenantId: restaurantId
+        TenantId: id
       }
     }, {
       headers: {
@@ -26,7 +29,7 @@ export default function ({ restaurantId }) {
   }
 
   const FetchCurrentTenant = () => {
-    axios.get(`https://localhost:44353/v1/restaurant/${restaurantId}`, {
+    axios.get(`https://localhost:44353/v1/restaurant/${id}`, {
       headers: {
         'Access-Control-Allow-Origin': '*'
       },
