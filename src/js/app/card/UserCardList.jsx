@@ -6,9 +6,7 @@ import { cssNumber } from "jquery";
 
 export default function ({setAddUserCardComponent}) {
   const [cards, setCards] = useState([]);
-  const [exitAnimation, setExitAnimation] = useState(0);
   const context = useContext(UserContext);
-  const queryString = require('query-string');
 
   const FetchCards = async () => {
     await axios({ method:'get', url : "https://localhost:44353/v1/card",
