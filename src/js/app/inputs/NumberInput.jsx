@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ({label, placeholder, name, register, rules, errorMessage, className="", defaultValue="", onChange}) {
+export default function ({label, placeholder, name, register, rules, errorMessage, className="", defaultValue="", onChange, step=1}) {
   return (
     <div className={`form-group ${className}`}>
       <h5 className="col-form-label pl-2">{label}</h5>
@@ -12,6 +12,7 @@ export default function ({label, placeholder, name, register, rules, errorMessag
         defaultValue={defaultValue}
         {...register(name, rules)}
         onChange={onChange}
+        step={step}
       />
       {
         errorMessage &&

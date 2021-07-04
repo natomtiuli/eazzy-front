@@ -45,30 +45,36 @@ export default function() {
   }
 
   const onSubmit = (data, e) => {
+    let formData = new FormData();  
+
     Object.keys(data).map(key => {
-      debugger;
-      if (key === 'Image' && data.Image.length) {
-        data.Image = data[key][0] || '';
+      if (key.includes('Image') && data.Image.length) {
+        formData.append(key, data[key][0] || ''); 
+      } else if (key.includes('Price')) {
+        var p = +data[key];
+        formData.append(key, JSON.stringify(p));
+      } else {
+        formData.append(key, JSON.stringify(data[key]));
       }
     });
-    
-    // axios.
-    // post('https://localhost:44353/v1/menu/menuitem', data, {
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     Authorization: `Bearer ${userContext.accessToken}`
-    //   },
-    // }).then(res => {
-    //     if (res.status === 201) {
-    //       e.target.reset();
-    //     } else {
-    //       console.log(res);
-    //     }
-    // })
+
+    axios.
+    post('https://localhost:44353/v1/menu/menuitem', formData, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        Authorization: `Bearer ${userContext.accessToken}`
+      },
+    }).then(res => {
+        if (res.status === 201) {
+          e.target.reset();
+        } else {
+          console.log(res);
+        }
+    })
   }
 
   return (
-    <form className='mw-1025' onSubmit={handleSubmit(onSubmit)}>
+    <form className='mw-1025' encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
       <SelectInput
         label="მენიუ"
         formGroupClassName='full-width'
@@ -120,6 +126,7 @@ export default function() {
           required: 'This field is required',
           maxLength: {value: 100, message: 'Must contain less than 100 symbols'}
         }}
+        step="any"
         errorMessage={errors?.Price?.message}
       />
       <PictureInput
