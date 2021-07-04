@@ -11,13 +11,13 @@ export default function() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="collapse navbar-collapse show">
           <ul className="navbar-nav mr-auto">
-            <li className={`nav-item ${openComponent==='list' ? 'btn-primary active' : ''}`} onClick={()=>setOpenComponent('list')}>
-              <a className="nav-link" href="#">რესტორნები</a>
+            <li className={`nav-item rounded ${openComponent==='list' ? 'btn-primary active' : ''}`} onClick={()=>setOpenComponent('list')}>
+              <a className="nav-link ml-3" href="#">რესტორნები</a>
             </li>
             {
               userContext.hasRole(['System Administrator']) &&
-              <li className={`nav-item ${openComponent==='add' ? 'btn-primary active' : ''}`} onClick={()=>setOpenComponent('add')}>
-                <a className="nav-link" href="#">დამატება</a>
+              <li className={`nav-item rounded ${openComponent==='add' ? 'btn-primary active' : ''}`} onClick={()=>setOpenComponent('add')}>
+                <a className="nav-link ml-3" href="#">დამატება</a>
               </li>
             }
           </ul>

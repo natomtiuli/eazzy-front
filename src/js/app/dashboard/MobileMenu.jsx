@@ -1,9 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {UserContext} from '../../contexts/UserContext';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import Login from '../auth/Login';
 import Register from '../auth/Register';
 import Cart from '../cart/Cart';
+import UserCard from '../card/UserCard';
+import { Card } from 'react-bootstrap';
 
 export default function ({setMobileMenu}) {
   const userContext = useContext(UserContext);
@@ -11,6 +13,7 @@ export default function ({setMobileMenu}) {
   const [loginComponent, setLoginComponent] = useState(false);
   const [registerComponent, setRegisterComponent] = useState(false);
   const [cartComponent, setCartComponent] = useState(false);
+  const [userCardComponent, setUserCardComponent] = useState(false);
   return (
     <div 
       className='mobile-menu-component black position-fixed'
@@ -34,11 +37,26 @@ export default function ({setMobileMenu}) {
         >
           <i className="fas fa-shopping-cart mr-2" />Cart
         </button>
+        { userContext.user != null &&
+            <button 
+            className='navigation-btn big bold d-block mb-2'
+            onClick={()=>setUserCardComponent(true)}
+            >
+            <i className="far fa-credit-card mr-2" />Card
+            </button>
+        }
         {
           userContext.user ?
           (
             <div>
-              logged in!
+              {
+                userContext.hasRole(['System Administrator', 'Administrator']) 
+                ?
+                <Link to="/admin" className="btn btn-primary mb-3">
+                  Admin 
+                </Link>
+                : ''
+              }
               <Link
                 className='navigation-btn big bold d-block mb-2'
                 to="/logout"
@@ -46,14 +64,6 @@ export default function ({setMobileMenu}) {
                 <i className="fas fa-sign-out-alt mr-2" />
                 Log out
               </Link>
-              {
-                userContext.hasRole(['System Administrator', 'Administrator']) 
-                ?
-                <div>
-                  admin !
-                </div>
-                : ''
-              }
             </div>
           )
           :
@@ -80,6 +90,9 @@ export default function ({setMobileMenu}) {
       }
       {
         registerComponent === true && <Register setRegisterComponent={setRegisterComponent} />
+      }
+      {
+        userCardComponent === true && <UserCard setUserCardComponent={setUserCardComponent} />
       }
       {
         cartComponent === true && <Cart setCartComponent={setCartComponent} />

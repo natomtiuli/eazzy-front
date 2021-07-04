@@ -55,7 +55,7 @@ export default function() {
 
   useEffect(()=>{
     FetchRestaurants();
-  },[]);
+  });
 
   return (
     <div>

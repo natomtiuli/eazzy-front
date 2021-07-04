@@ -12,7 +12,9 @@ export default function () {
             EAZZY
           </h2>
           <div className='d-flex align-items-center'>
-            <button className='cart-btn mr-3'>
+            <button 
+            className='cart-btn mr-3'
+            >
               <i className="fas fa-shopping-cart mr-2" />
             </button>
             <button 
