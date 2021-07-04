@@ -259,11 +259,19 @@ div.divider {
   animation-duration: 0.5s;
 }
 
-.mobile-menu-component[exitanimation="1"],
+.mobile-menu-component {
+  width: 200px;
+  animation-name: slideInLeftMobileMenu;
+}
+
 .login-component[exitanimation="1"],
 .cart-component[exitanimation="1"],
 .register-component[exitanimation="1"]{
   animation-name: slideOutRight;
+}
+
+.mobile-menu-component[exitanimation="1"] {
+  animation-name: slideOutRightMobileMenu;
 }
 
 @keyframes slideInLeft {
@@ -271,8 +279,18 @@ div.divider {
   100% {left: 0;}
 }
 
+@keyframes slideInLeftMobileMenu {
+  0%   {left: 100vw;}
+  100% {left: calc(100vw - 200px);}
+}
+
 @keyframes slideOutRight {
   0%   {left: 0;}
+  100% {left: 100vw}
+}
+
+@keyframes slideOutRightMobileMenu {
+  0%   {left: calc(100vw - 200px);}
   100% {left: 100vw}
 }
 

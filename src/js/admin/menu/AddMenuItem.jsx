@@ -3,6 +3,7 @@ import {UserContext} from '../../contexts/UserContext';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import TextInput from '../../app/inputs/TextInput';
+import TextArea from '../../app/inputs/TextArea';
 import SelectInput from '../../app/inputs/SelectInput';
 import NumberInput from '../../app/inputs/NumberInput';
 import PictureInput from '../../app/inputs/PictureInput';
@@ -44,19 +45,26 @@ export default function() {
   }
 
   const onSubmit = (data, e) => {
-    axios.
-    post('https://localhost:44353/v1/menu/menuitemtype', data, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        Authorization: `Bearer ${userContext.accessToken}`
-      },
-    }).then(res => {
-        if (res.status === 201) {
-          e.target.reset();
-        } else {
-          console.log(res);
-        }
-    })
+    Object.keys(data).map(key => {
+      debugger;
+      if (key === 'Image' && data.Image.length) {
+        data.Image = data[key][0] || '';
+      }
+    });
+    
+    // axios.
+    // post('https://localhost:44353/v1/menu/menuitem', data, {
+    //   headers: {
+    //     'Access-Control-Allow-Origin': '*',
+    //     Authorization: `Bearer ${userContext.accessToken}`
+    //   },
+    // }).then(res => {
+    //     if (res.status === 201) {
+    //       e.target.reset();
+    //     } else {
+    //       console.log(res);
+    //     }
+    // })
   }
 
   return (
@@ -69,6 +77,7 @@ export default function() {
         control={control}
         options={menus}
         getValues={getValues}
+        optionValue='menuId'
         register={register}
         errorMessage={errors?.MenuId?.message}
       />
@@ -88,18 +97,28 @@ export default function() {
         name='Name'
         register={register}
         rules={{
-          required: 'აუცილებელია ველის შევსება',
-          maxLength: {value: 100, message: 'უნდა შეიცავდეს 100 სიმბოლოზე ნაკლებს'}
+          required: 'This field is required',
+          maxLength: {value: 100, message: 'Must contain less than 100 symbols'}
         }} 
         errorMessage={errors?.Name?.message}
+      />
+      <TextArea
+        label='Product Description' 
+        name='Description'
+        register={register}
+        rules={{
+          required: 'This field is required',
+          maxLength: {value: 500, message: 'Must contain less than 500 symbols'}
+        }} 
+        errorMessage={errors?.Description?.message}
       />
       <NumberInput
         label='ფასი' 
         name='Price'
         register={register}
         rules={{
-          required: 'აუცილებელია ველის შევსება',
-          maxLength: {value: 100, message: 'უნდა შეიცავდეს 100 სიმბოლოზე ნაკლებს'}
+          required: 'This field is required',
+          maxLength: {value: 100, message: 'Must contain less than 100 symbols'}
         }}
         errorMessage={errors?.Price?.message}
       />
