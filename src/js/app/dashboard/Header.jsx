@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import MobileMenu from './MobileMenu';
 import Cart from '../cart/Cart';
 
@@ -11,18 +11,18 @@ export default function () {
       <div className='main-padding'>
         <div className='d-flex align-items-center justify-content-between'>
           <h2 className='big logo white mb-0'>
-            EAZZY
+            <a href="/" className="text-white" style={{ textDecoration: `none` }}>EAZZY</a>
           </h2>
           <div className='d-flex align-items-center'>
-            <button 
-            className='cart-btn mr-3'
-            onClick={()=>setCartComponent(true)}
+            <button
+              className='cart-btn mr-3'
+              onClick={() => setCartComponent(true)}
             >
               <i className="fas fa-shopping-cart mr-2" />
             </button>
-            <button 
+            <button
               className='burger-btn'
-              onClick={()=>setMobileMenu(true)}  
+              onClick={() => setMobileMenu(true)}
             >
               <div />
               <div />
