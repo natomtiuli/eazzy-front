@@ -9,7 +9,7 @@ export default function () {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [pagesAmount, setPagesAmount] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(1);
 
   let debounce = 0;
 
@@ -34,6 +34,34 @@ export default function () {
     debounce = setTimeout(() => {
       setSearch(e.target.value);
     }, 700)
+  }
+
+  const handlePagination = () => {
+    var length = 5;
+
+    if (length > pagesAmount) length = pagesAmount;
+
+    let start = currentPage - Math.floor(length / 2);
+    start = Math.max(start, 1);
+    start = Math.min(start, 1 + pagesAmount - length);
+
+    var pages = Array.from({ length: length }, (_, i) => start + i);
+    var pageHtml = [];
+
+    pages.forEach((p) => {
+      pageHtml.push(
+        <div key={pageHtml}>
+          <li
+            className={`page-item p-1 ${currentPage === p ? 'active' : ''}`}
+            onClick={() => setCurrentPage(p)}
+          >
+            <a className="page-link" href="#">{p}</a>
+          </li>
+        </div>
+      )
+    })
+
+    return pageHtml;
   }
 
   useEffect(() => {
@@ -105,26 +133,16 @@ export default function () {
             }
           </div>
           <nav aria-label="...">
-            <ul className="pagination">
-              <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`} onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}>
+            <ul className="pagination d-flex flex-row ">
+              <li className={`page-item p-1 ${currentPage === 1 ? 'disabled' : ''}`} onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}>
                 <span className="page-link">Previous</span>
               </li>
-              {
-                () => {
-                  for (let i = 1; i <= pagesAmount; ++i) {
-                    return (
-                      <div>
-                        <li
-                          className={`page-item ${currentPage === i ? 'active' : ''}`}
-                          onClick={() => setCurrentPage(i)}
-                        >
-                          <a className="page-link" href="#">{i}</a>
-                        </li>
-                      </div>
-                    )
-                  }
-                }}
-              <li className={`page-item ${currentPage === pagesAmount ? 'disabled' : ''}`} onClick={() => currentPage !== pagesAmount && setCurrentPage(currentPage + 1)}>
+              <div className="d-flex flex-row">
+                {
+                  handlePagination()
+                }
+              </div>
+              <li className={`page-item p-1 ${currentPage === pagesAmount ? 'disabled' : ''}`} onClick={() => currentPage !== pagesAmount && setCurrentPage(currentPage + 1)}>
                 <a className="page-link" href="#">Next</a>
               </li>
             </ul>
