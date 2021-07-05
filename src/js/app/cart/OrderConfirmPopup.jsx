@@ -37,17 +37,16 @@ export default function ({cart, setOrderConfirmPopup, setExitAnimation}) {
   const onSubmit = (data, e) => {
     data.shoppingCartItems = cart.cartItems;
     console.log(data);
-    axios({ method:'POST', url : "https://localhost:44353/v1/order", 
+    axios({ method:'POST', url : "https://localhost:44353/v1/order", config :{
       params: {
         tenantId: cart.tenantId,
         tableId: tableId,
-      }
-    }, {  
+      }, 
       headers: {
         'Access-Control-Allow-Origin': '*',
         Authorization: `Bearer ${userContext.accessToken}`
-      },
-    }).then(res => {
+      }
+    }}).then(res => {
         if (res.status === 201) {
           e.target.reset();
         } else {
