@@ -38,6 +38,11 @@ button {
   background-color: transparent;
 }
 
+.bg-purple {
+  background-color: #99154E !important;
+  border-color: #99154E !important;
+}
+
 div.fixed-bg {
   position: fixed;
   z-index: 1040;
@@ -114,7 +119,7 @@ div.fixed-bg.client-side {
 }
 
 .black {
-  color: #161616;
+  color: #534E52;
 }
 .white {
   color: #ffffff;
@@ -203,7 +208,7 @@ div.fixed-bg.client-side {
 
 .header-component {
   color: #FCFAEF;
-  background: #35263e;
+  background: #965D62;
   padding: 15px 0;
   position: absolute;
   top: 0;
@@ -249,7 +254,7 @@ div.divider {
 }
 
 .navigation-btn {
-
+  color: inherit !important;
 }
 
 .mobile-menu-component,
@@ -260,13 +265,15 @@ div.divider {
 .slide-in-left {
   width: 100%;
   height: 100vh;
-  background-color: #d3d3d3;
-  /* background: linear-gradient(312deg, #7485ff, #7d489c); */
-  border-left: 1px solid #35263e;
+  /* background-color: #d3d3d3; */
+  background: linear-gradient(
+    312deg
+    , #C7956D, #F2D974);
   z-index: 20;
   top: 0;
   padding: 30px 0;
   overflow: auto;
+  color: #534E52;
 
   animation-name: slideInLeft;
   animation-fill-mode: forwards;
@@ -274,7 +281,8 @@ div.divider {
 }
 
 .mobile-menu-component {
-  width: 200px;
+  width: 220px;
+  padding-left: 5px;
   animation-name: slideInLeftMobileMenu;
 }
 
@@ -321,8 +329,8 @@ div.divider {
 .menu-component,
 .restaurant-component {
   min-height: 100vh;
-  padding: 58px 0px 100px;
-  background-color: #28222b ;
+  padding: 58px 0px 0px;
+  background-color: #965D62 ;
 }
 
 /* category buttons */
@@ -342,10 +350,11 @@ div.divider {
 
 .category-buttons > button.category-btn {
   padding: 4px 15px;
-  border-radius: 20px;
+  border-radius: 4px;
+  font-weight: bold;
   flex-shrink: 0;
-  background-color: #614274;
-  border: 1px solid #614274;
+  background-color: #f2d974;
+  border: 1px solid #f2d974;
   transition: color 0.2s, background-color 0.2s, border 0.2s;
 }
 
@@ -354,8 +363,8 @@ div.divider {
 }
 
 .category-buttons > button.category-btn.selected {
-  background-color: #1e1721;
-  border: 1px solid #614274;
+  background-color: #99154E !important;
+  border-color: #99154E !important;
   color: #FCFAEF;
 }
 
@@ -391,21 +400,27 @@ div.divider {
 }
 
 /* menu */
+.rest-img-wrapper {
+  position: relative;
+  z-index: 2;
+}
 
 .img-wrapper.rest-img {
   overflow: hidden;
   width: 100vw;
   height: 210px;
-  left: -12px; 
+  box-shadow: 0 -40px 60px -30px #534e52 inset, inset 0 75px 50px -50px #965d62;
 }
 .img-wrapper.rest-img > img {
   width: 145%;
+  z-index: -1;
 }
 .menu .category button.category-header {
   border: unset;
-  border-radius: 15px 15px 0px 0px;
-  background-color: #35263e;
-  box-shadow: inset 0px 10px 40px -10px #7d489c;
+  width: 100%;
+  color: #534E52;
+  font-weight: bold;
+  background-color: #F2D974;
   padding: 5px 15px;
 }
 
@@ -413,6 +428,14 @@ div.divider {
   
 }
 
+.category {
+  background-color: #F2D974;
+  padding-bottom: 20px;
+  margin-bottom: 2px;
+}
+.restaurants .category {
+  background-color: transparent;
+}
 .category .item {
   background-color: #ffffff;
   padding: 8px;
@@ -421,6 +444,10 @@ div.divider {
   padding-left: calc(20vw + 18px);
   min-height: 22vw;
   transition: padding 0.4s;
+}
+
+.restaurants .category .item {
+  padding-bottom: 25px;
 }
 
 .category .item .img-wrapper {
@@ -470,7 +497,7 @@ div.divider {
   width: 26px;
   height: 26px;
   border: unset;
-  color: #767aee;
+  color: #965D62;
 }
 .category .item .buttons > button.remove,
 .cart-item-div button.remove {
@@ -478,7 +505,7 @@ div.divider {
 }
 
 .added-item {
-  background-color: #614274;
+  background-color: #C7956D;
   padding: 10px 15px 15px;
 }
 
@@ -496,4 +523,7 @@ div.cart-item-div .img-wrapper > img {
 
 div.cart-item-div .badge {
   font-size: 16px;
+  background-color: #965D62;
+  border-radius: 5px;
+  padding: 10px;
 }

@@ -25,20 +25,15 @@ export default function({setUserCardComponent}) {
               <i className="fas fa-arrow-left large" />
             </button>
           </div>
-          <h3 className='mb-0'>
+          <h3 className='mb-3'>
+            <i className="far fa-credit-card mr-2"></i>
             My Cards
           </h3>
-          <nav className="navbar navbar-expand-lg">
-            <div className="collapse navbar-collapse show">
-            <ul className="navbar-nav mr-auto">
-              <li className={`nav-item rounded mb-3 ${addCard === true ? 'btn-primary active' : 'btn-info'}`} onClick={()=>setAddCard(true)}>
-                <a className="nav-link text-dark ml-3" href="#">Add Card</a>
-              </li>
-            </ul>
-            </div>
-          </nav>
           <UserCardList />
-
+          <li className="btn my-2 btn-outline-dark big bold d-block mb-2" onClick={()=>setAddCard(true)}>
+            <i className="fas fa-plus-circle mr-2"></i>
+            Add New Card
+          </li>
         </div>
       </div>
       {

@@ -101,8 +101,7 @@ export default function () {
         }
         <div className='padded' />
       </div>
-      <div className='main-padding'>
-        <div className='menu'>
+        <div className='restaurants'>
           <div className='category'>
             {
               restaurants.map((item, index) => {
@@ -131,8 +130,7 @@ export default function () {
                 )
               })
             }
-          </div>
-          <nav aria-label="...">
+          {/* <nav aria-label="...">
             <ul className="pagination d-flex flex-row ">
               <li className={`page-item p-1 ${currentPage === 1 ? 'disabled' : ''}`} onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}>
                 <span className="page-link">Previous</span>
@@ -146,7 +144,7 @@ export default function () {
                 <a className="page-link" href="#">Next</a>
               </li>
             </ul>
-          </nav>
+          </nav> */}
         </div>
       </div>
     </div >

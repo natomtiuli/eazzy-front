@@ -25,7 +25,7 @@ export default function ({ item, index, expandItem, setExpandItem, tableId }) {
   };
 
   const remove = () => {
-    axios.delete(`https://localhost:44353/v1/cart/${item.menuItemId}`, {}, 
+    axios.delete(`https://localhost:44353/v1/cart/${item.menuItemId}`, 
     {
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -48,14 +48,14 @@ export default function ({ item, index, expandItem, setExpandItem, tableId }) {
         </div>
         <div className='item-description position-relative'>
           <h4 className='medium bold mb-1 '>
-            {item.name}
+            {JSON.parse(item.name)}
           </h4>
           <p
             className='sm'
             onClick={() => handleExpand()}
           >
             {
-              item.description.length >= 100 && expandItem !== index ? item.description.slice(0, 100) + '...' : item.description
+              JSON.parse(item.description).length >= 100 && expandItem !== index ? JSON.parse(item.description).slice(0, 100) + '...' : JSON.parse(item.description)
             }
           </p>
           <p className='price'>

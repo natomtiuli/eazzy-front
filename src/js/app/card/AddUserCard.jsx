@@ -91,11 +91,11 @@ export default function ({setAddCard, FetchCards=()=>{}}) {
               rules={{
               }} 
               errorMessage={errors?.cardHolder?.message}
-              className='mb-2'
+              className='mb-4'
             />
 
             <div className="input-group">
-              <button type="submit" className="btn btn-success btn-block">Add</button>
+              <button type="submit" className="btn btn-success btn-block bg-purple">Add</button>
             </div>
           </form>
         </div>

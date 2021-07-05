@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 
 export default function () {
   const [expandItem, setExpandItem] = useState(-1);
+  const [currentCategory, setCurrentCategory] = useState(-1);
   const [menus, setMenus] = useState([]);
   const [tenant, setTenant] = useState({})
   
@@ -58,15 +59,32 @@ export default function () {
 
   return (
     <div className='menu-component'>
-      <div className='main-padding'>
+      <div className='rest-img-wrapper'>
         <div className='img-wrapper mb-3 rest-img position-relative'>
           <img className="absolute-center" src={tenant.imageUrl} alt="restaurant image"></img>
         </div>
+      </div>
+      <div className='category-buttons mb-3 hide-scrollbar d-flex'>
+      {
+        menus.map((item, index) => {
+          return (
+            <button
+              key={index}
+              className={`category-btn sm ${currentCategory === index ? 'selected' : ''}`}
+              onClick={() => currentCategory === index ? setCurrentCategory(-1) : setCurrentCategory(index)}
+            >
+              {item.name}
+            </button>
+          )
+        })
+      }
+      </div>
+
         <div className='menu'>
           {
             menus.map((item, index) => {
               return (
-                <div className='category' key={index}>
+                <div className={`category ${currentCategory === index || currentCategory === -1 ? '': 'd-none'}`} key={index}>
                   <button
                     className='category-header d-flex align-items-center justify-content-between full-width white mb-2'>
                     {item.name}
@@ -87,7 +105,6 @@ export default function () {
             })
           }
         </div>
-      </div>
     </div>
   )
 }

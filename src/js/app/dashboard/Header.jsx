@@ -10,7 +10,7 @@ export default function () {
     <div className='header-component full-width'>
       <div className='main-padding'>
         <div className='d-flex align-items-center justify-content-between'>
-          <h2 className='big logo white mb-0'>
+          <h2 className='big logo font-weight-bold white mb-0'>
             <a href="/" className="text-white" style={{ textDecoration: `none` }}>EAZZY</a>
           </h2>
           <div className='d-flex align-items-center'>

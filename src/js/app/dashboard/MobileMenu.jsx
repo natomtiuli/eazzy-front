@@ -51,11 +51,12 @@ export default function ({ setMobileMenu }) {
               <div>
                 {
                   userContext.hasRole(['System Administrator', 'Administrator'])
-                    ?
-                    <Link onClick={() => setMobileMenu(false)} to="/admin" className="btn btn-primary mb-3">
-                      Admin
-                    </Link>
-                    : ''
+                  ?
+                  <Link onClick={() => setMobileMenu(false)} to="/admin" className="navigation-btn big bold d-block mb-2">
+                    <i className="fas fa-cog mr-2"></i>
+                    Admin
+                  </Link>
+                  : ''
                 }
                 <Link
                   className='navigation-btn big bold d-block mb-2'

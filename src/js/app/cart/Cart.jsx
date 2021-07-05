@@ -120,7 +120,8 @@ export default function ({setCartComponent}) {
             Clear
           </button>
         </div>
-        <div className='my-3 p-3 bg-white rounded box-shadow'>
+      </div>
+      <div className='my-3 p-3 bg-white rounded box-shadow'>
           {
             mapItems.map((item, index) => {
               return(
@@ -133,7 +134,7 @@ export default function ({setCartComponent}) {
                     <span className="d-block">{item.price} &#8382; x {item.count}</span>
                   </div>
                   <div>
-                    <span className="badge badge-primary badge-pill py-1 px-3">{item.price*item.count} &#8382;</span>
+                    <span className="badge badge-primary badge-pill">{item.price*item.count} &#8382;</span>
                     <div className='buttons justify-content-center d-flex align-items-center medium'>
                       <button className='remove'>
                         <i className="fas fa-minus" />
@@ -149,12 +150,14 @@ export default function ({setCartComponent}) {
             })
           }
         </div>
-        <button 
-          type="button" 
-          className="btn btn-primary btn-lg btn-block"
-          onClick={()=>setOrderConfirmPopup(true)}
-        >Order</button>
-      </div>
+        <div className="main-padding">
+          <button 
+            type="button" 
+            className="btn btn-primary btn-lg btn-block bg-purple"
+            onClick={()=>setOrderConfirmPopup(true)}
+          >Order</button>
+
+        </div>
       {
         orderConfirmPopup === true && <OrderConfirmPopup cart={cart} setOrderConfirmPopup={setOrderConfirmPopup} setExitAnimation={setExitAnimation}/>
       }
