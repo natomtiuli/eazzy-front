@@ -49,7 +49,8 @@ export default function ({ cart, setOrderConfirmPopup, setExitAnimation }) {
         Authorization: `Bearer ${userContext.accessToken}`
       }
     }).then(res => {
-      if (res.status === 201) {
+      setConfirmed(true);
+      if (res.status === 200) {
         e.target.reset();
       } else {
         console.log(res);
