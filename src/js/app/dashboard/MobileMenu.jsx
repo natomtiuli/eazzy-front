@@ -16,7 +16,7 @@ export default function ({ setMobileMenu }) {
   const [userCardComponent, setUserCardComponent] = useState(false);
   return (
     <div
-      className='mobile-menu-component black position-fixed'
+      className='mobile-menu-component hide-scrollbar black position-fixed'
       exitanimation={exitAnimation}
       onAnimationEnd={() => {
         exitAnimation === 1 && setMobileMenu(false)

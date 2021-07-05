@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import TextInput from "../inputs/TextInput";
 import axios from "axios";
 
-export default function ({setAddUserCardComponent}) {
+export default function ({setAddCard, FetchCards=()=>{}}) {
   const [exitAnimation, setExitAnimation] = useState(0);
   const context = useContext(UserContext);
 
@@ -23,11 +23,28 @@ export default function ({setAddUserCardComponent}) {
         Authorization: `Bearer ${context.accessToken}`
       },
     }).then(res => {
+      FetchCards();
+      setExitAnimation(1);
     });
   };
 
   return (
+    <div 
+      className='slide-in-left position-fixed hide-scrollbar'
+      exitanimation={exitAnimation}
+      onAnimationEnd={() => {
+        exitAnimation === 1 && setAddCard(false)
+      }}
+    >
       <div className='main-padding'>
+        <div className='divider'>
+          <button 
+            className='back'
+            onClick={()=>setExitAnimation(1)}
+          >
+            <i className="fas fa-arrow-left large" />
+          </button>
+        </div>
         <div>
           <form onSubmit={handleSubmit(enter)}>
             <TextInput 
@@ -78,10 +95,11 @@ export default function ({setAddUserCardComponent}) {
             />
 
             <div className="input-group">
-                <button type="submit" className="btn btn-success btn-block">Add</button>
+              <button type="submit" className="btn btn-success btn-block">Add</button>
             </div>
           </form>
         </div>
       </div>
+    </div>
   )
 } 

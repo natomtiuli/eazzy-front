@@ -9,7 +9,7 @@ export default function () {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [pagesAmount, setPagesAmount] = useState(0);
-  const [pageSize, setPageSize] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   let debounce = 0;
 

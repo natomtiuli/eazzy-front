@@ -40,7 +40,7 @@ export default function ({setLoginComponent}) {
 
   return (
     <div 
-      className='login-component position-fixed'
+      className='login-component hide-scrollbar position-fixed'
       exitanimation={exitAnimation}
       onAnimationEnd={() => {
         exitAnimation === 1 && setLoginComponent(false)
@@ -87,7 +87,7 @@ export default function ({setLoginComponent}) {
             /> */}
 
             <div className="input-group">
-                <button type="submit" className="btn btn-success btn-block">ავტორიზაცია</button>
+              <button type="submit" className="btn btn-success btn-block">ავტორიზაცია</button>
             </div>
           </form>
         </div>

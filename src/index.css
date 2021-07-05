@@ -48,8 +48,20 @@ div.fixed-bg {
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+}
+
+div.fixed-bg.client-side {
+  background-color: #0000004d;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.order-confirm.popup {
+  left: 10px;
+  right: 10px;
+  top: 100px;
 }
 
 .fixed-bg button.close-btn {
@@ -133,7 +145,6 @@ div.fixed-bg {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
-
 
 /* inputs */
 
@@ -245,15 +256,17 @@ div.divider {
 .card-component, 
 .login-component,
 .cart-component,
-.register-component {
-  width: 100vw;
-  min-height: 100vh;
+.register-component,
+.slide-in-left {
+  width: 100%;
+  height: 100vh;
   background-color: #d3d3d3;
   /* background: linear-gradient(312deg, #7485ff, #7d489c); */
   border-left: 1px solid #35263e;
   z-index: 20;
   top: 0;
   padding: 30px 0;
+  overflow: auto;
 
   animation-name: slideInLeft;
   animation-fill-mode: forwards;
@@ -268,7 +281,8 @@ div.divider {
 .login-component[exitanimation="1"],
 .cart-component[exitanimation="1"],
 .register-component[exitanimation="1"],
-.card-component[exitanimation="1"]{
+.card-component[exitanimation="1"],
+.slide-in-left[exitanimation="1"]{
   animation-name: slideOutRight;
 }
 
@@ -307,7 +321,7 @@ div.divider {
 .menu-component,
 .restaurant-component {
   min-height: 100vh;
-  padding: 75px 0px 100px;
+  padding: 58px 0px 100px;
   background-color: #28222b ;
 }
 
@@ -378,6 +392,15 @@ div.divider {
 
 /* menu */
 
+.img-wrapper.rest-img {
+  overflow: hidden;
+  width: 100vw;
+  height: 210px;
+  left: -12px; 
+}
+.img-wrapper.rest-img > img {
+  width: 145%;
+}
 .menu .category button.category-header {
   border: unset;
   border-radius: 15px 15px 0px 0px;
@@ -440,18 +463,37 @@ div.divider {
   right: 0;
 }
 
-.category .item .buttons > button {
+.category .item .buttons > button,
+.cart-item-div button.remove,
+.cart-item-div button.add {
   border-radius: 50%;
   width: 26px;
   height: 26px;
   border: unset;
   color: #767aee;
 }
-.category .item .buttons > button.remove {
+.category .item .buttons > button.remove,
+.cart-item-div button.remove {
   margin-right: 8px;
 }
 
 .added-item {
   background-color: #614274;
   padding: 10px 15px 15px;
+}
+
+/* cart */
+
+div.cart-item-div .img-wrapper {
+  width: 50px;
+  overflow: hidden;
+  height: 50px;
+}
+
+div.cart-item-div .img-wrapper > img {
+  width: 125%;
+}
+
+div.cart-item-div .badge {
+  font-size: 16px;
 }

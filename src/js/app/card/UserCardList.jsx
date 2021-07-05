@@ -31,28 +31,26 @@ export default function ({setAddUserCardComponent}) {
   },[]);
 
   return (
-    <div className='main-padding'>
-      <div>
-        {
-          cards.length > 0 ?
-          cards.map((item,index) => {
-            return (
-              <Card key={index} style={{ width: '100%' }}>
-                <Card.Body>
-                  <Card.Title className="w-100">{item.numberMask}</Card.Title>
-                      <Card.Subtitle className="block mb-2 text-muted">Expires : {item.expires}, CCV : {item.cCV}</Card.Subtitle>
-                </Card.Body>
-                <Card.Text className="block ml-3 mb-2">
-                    Card Holder : {item.cardHolder}
-                </Card.Text>
-              </Card>
-            )
-          })
-          :
-          
-          <div className="m-auto">No Cards</div>
-        }
-      </div>
+    <div>
+      {
+        cards.length > 0 ?
+        cards.map((item,index) => {
+          return (
+            <Card key={index} style={{ width: '100%' }}>
+              <Card.Body>
+                <Card.Title className="w-100">{item.numberMask}</Card.Title>
+                    <Card.Subtitle className="block mb-2 text-muted">Expires : {item.expires}, CCV : {item.cCV}</Card.Subtitle>
+              </Card.Body>
+              <Card.Text className="block ml-3 mb-2">
+                  Card Holder : {item.cardHolder}
+              </Card.Text>
+            </Card>
+          )
+        })
+        :
+        
+        <div className="m-auto">You don't have saved cards</div>
+      }
     </div>
   )
 } 

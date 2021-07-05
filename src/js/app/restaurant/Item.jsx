@@ -25,9 +25,8 @@ export default function ({ item, index, expandItem, setExpandItem, tableId }) {
   };
 
   const remove = () => {
-    axios.delete(`https://localhost:44353/v1/cart`, {
-      MenuItemId: item.menuItemId
-    }, {
+    axios.delete(`https://localhost:44353/v1/cart/${item.menuItemId}`, {}, 
+    {
       headers: {
         'Access-Control-Allow-Origin': '*',
         Authorization: `Bearer ${userContext.accessToken}`

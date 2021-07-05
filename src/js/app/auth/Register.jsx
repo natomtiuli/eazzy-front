@@ -31,7 +31,7 @@ export default function ({setRegisterComponent}) {
 
   return (
     <div 
-      className='register-component position-fixed'
+      className='register-component hide-scrollbar position-fixed'
       exitanimation={exitAnimation}
       onAnimationEnd={() => {
         exitAnimation === 1 && setRegisterComponent(false)
