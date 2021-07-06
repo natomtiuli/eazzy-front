@@ -61,7 +61,7 @@ export default function () {
     <div className='menu-component'>
       <div className='rest-img-wrapper'>
         <div className='img-wrapper mb-3 rest-img position-relative'>
-          <img className="absolute-center" src={tenant.imageUrl} alt="restaurant image"></img>
+          <img className="absolute-center" style={{width:'622px', height:'210px'}} src="https://htmsports.com/wp-content/uploads/2020/12/kfchd2-600x200.jpg" /*{tenant.imageUrl}*/ alt="restaurant image"></img>
         </div>
       </div>
       <div className='category-buttons mb-3 hide-scrollbar d-flex'>
@@ -84,7 +84,7 @@ export default function () {
           {
             menus.map((item, index) => {
               return (
-                <div className={`category ${currentCategory === index || currentCategory === -1 ? '': 'd-none'}`} key={index}>
+                <div className={`category mt-3 ml-2 mr-2 ${currentCategory === index || currentCategory === -1 ? '': 'd-none'}`} key={index}>
                   <button
                     className='category-header d-flex align-items-center justify-content-between full-width white mb-2'>
                     {item.name}
@@ -94,7 +94,7 @@ export default function () {
                     item.menuItems.map((menuItem) => {
                       { lastMenuItemIndex++ }
                       return (
-                        <div className='outer-div mb-2' key={lastMenuItemIndex}>
+                        <div className='outer-div menuitem-rounded mt-2' key={lastMenuItemIndex}>
                           <Item item={menuItem} index={lastMenuItemIndex} expandItem={expandItem} setExpandItem={setExpandItem} tableId={tableId} />
                         </div>
                       )

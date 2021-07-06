@@ -208,13 +208,13 @@ div.fixed-bg.client-side {
 
 .header-component {
   color: #FCFAEF;
-  background: #965D62;
+  background: #534E52;
   padding: 15px 0;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 58px;
+  height: 60px;
 }
 
 .header-component h2.logo {
@@ -432,6 +432,13 @@ div.divider {
   background-color: #F2D974;
   padding-bottom: 20px;
   margin-bottom: 2px;
+  border-radius: 1rem !important;
+}
+
+.category-header,
+ .menuitem-rounded
+{
+  border-radius: 1rem !important;
 }
 .restaurants .category {
   background-color: transparent;

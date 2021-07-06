@@ -19,7 +19,10 @@ export default function () {
         Name: search,
         pageSize: pageSize,
         pageIndex: currentPage
-      }
+      },
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
     }).then(res => {
       if (res.status === 200) {
         setRestaurants(res.data.data);
@@ -70,7 +73,7 @@ export default function () {
 
   return (
     <div className='restaurant-component'>
-      <div style={{ width: '90%' }} className='ml-auto h-auto mr-auto input-group mb-3'>
+      <div style={{ width: '90%' }} className='ml-auto h-auto mr-auto input-group mb-3 mt-3'>
         <input
           label='Search'
           name='search'
@@ -101,7 +104,7 @@ export default function () {
         }
         <div className='padded' />
       </div>
-        <div className='restaurants'>
+        <div className='restaurants ml-4 mr-4'>
           <div className='category'>
             {
               restaurants.map((item, index) => {
@@ -130,7 +133,7 @@ export default function () {
                 )
               })
             }
-          {/* <nav aria-label="...">
+          {<nav aria-label="...">
             <ul className="pagination d-flex flex-row ">
               <li className={`page-item p-1 ${currentPage === 1 ? 'disabled' : ''}`} onClick={() => currentPage !== 1 && setCurrentPage(currentPage - 1)}>
                 <span className="page-link">Previous</span>
@@ -144,7 +147,7 @@ export default function () {
                 <a className="page-link" href="#">Next</a>
               </li>
             </ul>
-          </nav> */}
+          </nav>}
         </div>
       </div>
     </div >

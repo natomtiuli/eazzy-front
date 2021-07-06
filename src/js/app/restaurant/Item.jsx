@@ -39,7 +39,7 @@ export default function ({ item, index, expandItem, setExpandItem, tableId }) {
 
   return (
     <>
-      <div className={`item d-flex position-relative ${expandItem === index ? 'expanded' : ''}`}>
+      <div className={`item d-flex position-relative rounded mr-2 ml-2 ${expandItem === index ? 'expanded' : ''}`}>
         <div
           className='img-wrapper position-absolute'
           onClick={() => handleExpand()}
@@ -48,14 +48,14 @@ export default function ({ item, index, expandItem, setExpandItem, tableId }) {
         </div>
         <div className='item-description position-relative'>
           <h4 className='medium bold mb-1 '>
-            {JSON.parse(item.name)}
+            {item.name}
           </h4>
           <p
             className='sm'
             onClick={() => handleExpand()}
           >
             {
-              JSON.parse(item.description).length >= 100 && expandItem !== index ? JSON.parse(item.description).slice(0, 100) + '...' : JSON.parse(item.description)
+              item.description.length >= 100 && expandItem !== index ? item.description.slice(0, 100) + '...' : item.description
             }
           </p>
           <p className='price'>
@@ -73,7 +73,7 @@ export default function ({ item, index, expandItem, setExpandItem, tableId }) {
       </div>
       {
         cart.cart && cart.cart[item.menuItemId] && cart.cart[item.menuItemId]["quantity"] ?
-          <div className='added-item white d-flex align-items-center full-width'>
+          <div className='added-item rounded-bottom mr-2 ml-2 white d-flex align-items-center'>
             <div className='amount mr-1'>
               {cart.cart && cart.cart[item.menuItemId] && cart.cart[item.menuItemId]["quantity"]} x
             </div>

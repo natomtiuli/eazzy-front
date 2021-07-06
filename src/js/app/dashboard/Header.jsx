@@ -7,7 +7,7 @@ export default function () {
   const [cartComponent, setCartComponent] = useState(false);
 
   return (
-    <div className='header-component full-width'>
+    <div className='header-component full-width mb-5'>
       <div className='main-padding'>
         <div className='d-flex align-items-center justify-content-between'>
           <h2 className='big logo font-weight-bold white mb-0'>

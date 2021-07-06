@@ -127,9 +127,10 @@ export default function ({setCartComponent}) {
               return(
               <div key={index} className="cart-item-div media text-muted pt-3">
                 <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray d-flex align-items-center justify-content-between">
+                  <img className="rounded" style={{width:'200px', height:'100px'}} src={`${item.imageUrl}`} alt="product"></img>
                   <div className='big'>
                     <div className="d-flex justify-content-between align-items-center w-100">
-                      <strong className="text-gray-dark">{JSON.parse(item.name)}</strong>
+                      <strong className="text-gray-dark">{item.name}</strong>
                     </div>
                     <span className="d-block">{item.price} &#8382; x {item.count}</span>
                   </div>

@@ -5,6 +5,7 @@ import { UserContext } from "../../contexts/UserContext";
 import SelectInput from '../inputs/SelectInput';
 import AddUserCard from '../card/AddUserCard';
 import { useParams } from 'react-router-dom';
+import { CartContext } from '../../contexts/CartContext';
 
 export default function ({ cart, setOrderConfirmPopup, setExitAnimation }) {
   const { register, handleSubmit, control, getValues, formState: { errors } } = useForm();
@@ -12,9 +13,9 @@ export default function ({ cart, setOrderConfirmPopup, setExitAnimation }) {
   const [confirmed, setConfirmed] = useState(false);
   const [cards, setCards] = useState([]);
   const userContext = useContext(UserContext)
+  const cartContext = useContext(CartContext)
 
-  // const { tableId } = useParams();
-  const tableId = 1;
+  const { tableId } = useParams();
 
   const FetchCards = async () => {
     await axios({
@@ -49,7 +50,9 @@ export default function ({ cart, setOrderConfirmPopup, setExitAnimation }) {
         Authorization: `Bearer ${userContext.accessToken}`
       }
     }).then(res => {
-      if (res.status === 201) {
+      if (res.status === 200) {
+        setConfirmed(true);
+        cartContext.reset()
         e.target.reset();
       } else {
         console.log(res);
