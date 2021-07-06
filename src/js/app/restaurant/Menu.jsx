@@ -61,7 +61,7 @@ export default function () {
     <div className='menu-component'>
       <div className='rest-img-wrapper'>
         <div className='img-wrapper mb-3 rest-img position-relative'>
-          <img className="absolute-center" style={{width:'622px', height:'210px'}} src="https://htmsports.com/wp-content/uploads/2020/12/kfchd2-600x200.jpg" /*{tenant.imageUrl}*/ alt="restaurant image"></img>
+          <img className="absolute-center" style={{width:'622px', height:'210px'}} src={tenant.imageUrl} alt="restaurant image"></img>
         </div>
       </div>
       <div className='category-buttons mb-3 hide-scrollbar d-flex'>
