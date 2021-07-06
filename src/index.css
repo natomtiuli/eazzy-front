@@ -299,23 +299,23 @@ div.divider {
 }
 
 @keyframes slideInLeft {
-  0%   {left: 100vw;}
+  0%   {left: 100%;}
   100% {left: 0;}
 }
 
 @keyframes slideInLeftMobileMenu {
-  0%   {left: 100vw;}
-  100% {left: calc(100vw - 200px);}
+  0%   {left: 100%;}
+  100% {left: calc(100% - 200px);}
 }
 
 @keyframes slideOutRight {
   0%   {left: 0;}
-  100% {left: 100vw}
+  100% {left: 100%}
 }
 
 @keyframes slideOutRightMobileMenu {
-  0%   {left: calc(100vw - 200px);}
-  100% {left: 100vw}
+  0%   {left: calc(100% - 200px);}
+  100% {left: 100%}
 }
 
 .cart-component {
@@ -407,7 +407,7 @@ div.divider {
 
 .img-wrapper.rest-img {
   overflow: hidden;
-  width: 100vw;
+  width: 100%;
   height: 210px;
   box-shadow: 0 -40px 60px -30px #534e52 inset, inset 0 75px 50px -50px #965d62;
 }
